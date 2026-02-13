@@ -227,7 +227,7 @@
                 }
                 if (cactusPosition < 50 && !passed) {
                     score++; scoreText.innerText = "Điểm: " + score; passed = true;
-                    if (score >= 3) handleVictory();
+                    if (score >= 15) handleVictory();
                 }
                 if (cactusPosition < -50) { cactus.remove(); clearInterval(timerId); }
             }, 20);
@@ -266,4 +266,5 @@
         createCactus();
     </script>
 </body>
+
 </html>
