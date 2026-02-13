@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quà Valentine</title>
+    <title>Quà Valentine hihi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
@@ -50,7 +50,7 @@
             z-index: 9999;
         }
         .gift-container { display: flex; gap: 30px; margin-top: 20px; }
-        .gift-box { font-size: 60px; cursor: pointer; animation: float 2s infinite ease-in-out; }
+        .gift-box { font-size: 150px; cursor: pointer; animation: float 2s infinite ease-in-out; }
         .gift-box:hover { transform: scale(1.2); }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         #gift-reveal { display: none; flex-direction: column; align-items: center; margin-top: 10px; }
@@ -113,7 +113,7 @@
 
     <div id="background-container"></div>
 
-    <h1>Cho chị Loan <3</h1>
+    <h1>Cho chị Loan <3 </h1>
     <p>Nhảy đủ <b>25 lần</b> để có bất ngờ nhe kekeke!</p>
 
     <div id="game-board">
@@ -149,7 +149,7 @@
             <p>
                 Bonsoir chị Loan,<br><br>
                 Em làm ra cái game nhỏ xíu này để tặng chị, hy vọng chị đã có những giây phút vui vẻ khi chơi nó (và không quạu khi bị thua kkk).<br><br>
-                Thực ra món quà lớn nhất em muốn gửi không phải là mấy tấm ảnh kia đâu, mà là những lời chúc này nè.<br><br>
+                Thực ra món quà lớn nhất em muốn gửi không phải là mấy món quá kia đâu, mà là những lời chúc này nè.<br><br>
                 Chúc chị năm mới luôn vui vẻ, hạnh phúc và đạt được mọi điều mình mong muốn nhé. Cảm ơn vì đã là người mang đến cho cuốc sống em thêm nhiều màu sắc.<br><br>
                 Mãi yêuuu!<br><br>
                 <b>[em Thắng]</b>
@@ -227,7 +227,7 @@
                 }
                 if (cactusPosition < 50 && !passed) {
                     score++; scoreText.innerText = "Điểm: " + score; passed = true;
-                    if (score >= 15) handleVictory();
+                    if (score >= 3) handleVictory();
                 }
                 if (cactusPosition < -50) { cactus.remove(); clearInterval(timerId); }
             }, 20);
@@ -266,6 +266,4 @@
         createCactus();
     </script>
 </body>
-
 </html>
-
