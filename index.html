@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quà Valentine hihi</title>
+    <title>Bất ngờ cho chị</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
@@ -18,7 +18,7 @@
         h1 { margin-top: 20px; color: #333; position: relative; z-index: 10; }
         p { position: relative; z-index: 10; }
 
-        /* --- CSS ẢNH BAY (GIỮ NGUYÊN) --- */
+        /* --- CSS ẢNH BAY --- */
         .flying-img {
             position: fixed; opacity: 0.5; z-index: 1; border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
@@ -35,12 +35,35 @@
             position: relative; background-color: rgba(255, 255, 255, 0.85);
             overflow: hidden; z-index: 10;
         }
-        #dino { width: 70px; height: 120px; background-image: url('nhanvat.png'); background-size: cover; position: absolute; bottom: 0; left: 50px; z-index: 6; }
+        #dino { 
+            width: 70px; height: 120px; 
+            background-image: url('nhanvat.png'); 
+            background-size: cover; 
+            position: absolute; bottom: 0; left: 50px; z-index: 6; 
+        }
         .cactus { width: 25px; height: 60px; background-color: #28a745; position: absolute; bottom: 0; left: 800px; border-radius: 4px 4px 0 0; z-index: 6; }
         .jump-animation { animation: jump 0.5s linear; }
         @keyframes jump { 0% { bottom: 0; } 30% { bottom: 130px; } 70% { bottom: 130px; } 100% { bottom: 0; } }
         #score-board { position: absolute; top: 10px; right: 20px; font-size: 24px; font-weight: bold; color: #333; z-index: 10; }
         #game-over-msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; z-index: 10; }
+
+        /* --- MÀN HÌNH CHÀO MỪNG (START SCREEN) - MỚI --- */
+        #start-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 100;
+        }
+        #btn-start {
+            background-color: #ff4757; font-size: 24px; padding: 15px 40px; 
+            border-radius: 50px; box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.1); } 
+            100% { transform: scale(1); } 
+        }
 
         /* --- MÀN HÌNH CHIẾN THẮNG & QUÀ --- */
         #victory-screen {
@@ -63,49 +86,24 @@
         button { padding: 10px 25px; font-size: 18px; cursor: pointer; background-color: #333; color: white; border: none; margin-top: 15px; border-radius: 25px; transition: 0.3s; }
         button:hover { transform: scale(1.05); }
         #btn-real-gift { background-color: #ff4757; }
-        #btn-read-letter { background-color: #2ed573; display: none; } /* Nút đọc thư xanh lá */
+        #btn-read-letter { background-color: #2ed573; display: none; }
 
-        /* --- GIAO DIỆN LÁ THƯ (MỚI) --- */
+        /* --- GIAO DIỆN LÁ THƯ --- */
         #letter-screen {
-            display: none; /* Ẩn mặc định */
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: rgba(0,0,0,0.6); /* Nền tối mờ phía sau */
-            z-index: 10000;
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: rgba(0,0,0,0.6); z-index: 10000;
             align-items: center; justify-content: center;
         }
-
         .paper {
-            width: 600px; max-width: 90%;
-            height: 70vh; /* Chiều cao giấy */
-            background-color: #fff9c4; /* Màu giấy vàng nhạt */
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            position: relative;
-            overflow-y: auto; /* Cho phép cuộn nếu thư dài */
-            border-radius: 5px;
-            
-            /* Font chữ viết tay cho giống thư thật */
-            font-family: 'Patrick Hand', cursive; 
-            font-size: 22px;
-            line-height: 1.6;
-            color: #444;
-            text-align: left; /* Canh trái văn bản */
-            
-            /* Hiệu ứng dòng kẻ */
+            width: 600px; max-width: 90%; height: 70vh; background-color: #fff9c4; padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); position: relative; overflow-y: auto; border-radius: 5px;
+            font-family: 'Patrick Hand', cursive; font-size: 22px; line-height: 1.6; color: #444; text-align: left;
             background-image: repeating-linear-gradient(#fff9c4 0px, #fff9c4 29px, #94a3b8 30px);
         }
-
         .paper h2 {
-            font-family: 'Dancing Script', cursive; /* Font tiêu đề bay bướm */
-            font-size: 36px;
-            text-align: center;
-            color: #d63031;
-            margin-top: 0;
+            font-family: 'Dancing Script', cursive; font-size: 36px; text-align: center; color: #d63031; margin-top: 0;
         }
-
-        .close-btn {
-            display: block; margin: 30px auto 0; background-color: #333;
-        }
+        .close-btn { display: block; margin: 30px auto 0; background-color: #333; }
 
     </style>
 </head>
@@ -117,8 +115,14 @@
     <p>Nhảy đủ <b>25 lần</b> để có bất ngờ nhe kekeke!</p>
 
     <div id="game-board">
+        <div id="start-screen">
+            <h2 style="color: #ff6b6b; font-family: 'Dancing Script', cursive; font-size: 40px;">Sẵn sàng chưa?</h2>
+            <button id="btn-start" onclick="startGame()">BẮT ĐẦU CHƠI ❤️</button>
+        </div>
+
         <div id="score-board">Điểm: 0</div>
         <div id="dino"></div>
+        
         <div id="game-over-msg">
             <h2 style="color: red;">Thua gòiii!</h2>
             <button onclick="restartGame()">Chơi lại</button>
@@ -126,7 +130,7 @@
         
         <div id="victory-screen">
             <h2 id="victory-title" style="color: #ff6b6b;">🎉 Quà tặng đó chính là! 🎉</h2>
-            <p id="instruction-text">Chọn một hộp i <br> nhớ là 1 lần thôi đó-.-<br> <b> đừng xạo nheee<b></b></p>
+            <p id="instruction-text">Chọn một hộp iiiiii <br></p>
             <div class="gift-container" id="gift-selection">
                 <div class="gift-box" onclick="openGift(1)">🎁</div>
                 <div class="gift-box" onclick="openGift(2)">🎁</div>
@@ -135,7 +139,6 @@
             <div id="gift-reveal">
                 <img id="reward-img" src="" alt="Phần thưởng">
                 <p id="reward-text" style="font-weight: bold; font-size: 18px; margin-top: 10px; color: #333;"></p>
-                
                 <button id="btn-real-gift" onclick="showRealGift()">🎁 sau tết gặp em tặng 🤭</button>
                 <button id="btn-read-letter" onclick="showLetter()">còn 1 điều bất ngờ phía sau kkk</button>
             </div>
@@ -145,7 +148,6 @@
     <div id="letter-screen">
         <div class="paper">
             <h2>Gửi người đặc biệt,</h2>
-            
             <p>
                 Bonsoir chị Loan,<br><br>
                 Em làm ra cái game nhỏ xíu này để tặng chị, hy vọng chị đã có những giây phút vui vẻ khi chơi nó (và không quạu khi bị thua kkk).<br><br>
@@ -154,17 +156,14 @@
                 Mãi yêuuu!<br><br>
                 <b>[em Thắng]</b>
             </p>
-
             <button class="close-btn" onclick="location.reload()">Đóng thư & Chơi lại</button>
         </div>
     </div>
 
     <script>
-        // --- DANH SÁCH ẢNH NỀN ---
-        const imagesFromLeft = ["nen1.jpg", "nen2.jpg", "nen3.jpg", "nen4.jpg", "nen5.jpg", 
-            "nen6.jpg", "nen7.jpg", "nen8.jpg", "nen9.jpg", "nen10.jpg"];
-        const imagesFromRight = [ "nen11.jpg", "nen12.jpg", "nen13.jpg", "nen14.jpg", "nen15.jpg", 
-            "nen16.jpg", "nen17.jpg", "nen18.jpg", "nen19.jpg", "nen20.jpg"];
+        // --- ẢNH NỀN ---
+        const imagesFromLeft = ["nen1.jpg", "nen2.jpg", "nen3.jpg", "nen4.jpg", "nen5.jpg", "nen6.jpg", "nen7.jpg", "nen8.jpg", "nen9.jpg", "nen10.jpg"];
+        const imagesFromRight = [ "nen11.jpg", "nen12.jpg", "nen13.jpg", "nen14.jpg", "nen15.jpg", "nen16.jpg", "nen17.jpg", "nen18.jpg", "nen19.jpg", "nen20.jpg"];
         const BATCH_DELAY = 3; 
 
         function spawnImages(imageList, direction) {
@@ -188,16 +187,19 @@
         const scoreText = document.getElementById("score-board");
         const gameOverMsg = document.getElementById("game-over-msg");
         const victoryScreen = document.getElementById("victory-screen");
+        const startScreen = document.getElementById("start-screen"); // Mới
+        
+        // Các biến khác
         const giftSelection = document.getElementById("gift-selection");
         const giftReveal = document.getElementById("gift-reveal");
         const rewardImg = document.getElementById("reward-img");
         const rewardText = document.getElementById("reward-text");
         const btnRealGift = document.getElementById("btn-real-gift");
-        const btnReadLetter = document.getElementById("btn-read-letter"); // Nút mới
-        const letterScreen = document.getElementById("letter-screen"); // Màn hình thư
+        const btnReadLetter = document.getElementById("btn-read-letter"); 
+        const letterScreen = document.getElementById("letter-screen");
         const victoryTitle = document.getElementById("victory-title");
 
-        let isJumping = false; let isGameOver = false; let isVictory = false;
+        let isJumping = false; let isGameOver = false; let isVictory = false; let isPlaying = false; // Biến kiểm tra đang chơi
         let score = 0; let gameSpeed = 10; let cactusTimeoutId = null; let currentGiftId = 0;
 
         const rewards = {
@@ -206,7 +208,17 @@
             3: { fakeImg: "fake3.jpg", fakeMsg: "Oiii thíc thíiiii. Phải nghe 10000 câu chuyện từ Thắng :))", realImg: "real3.jpg", realMsg: "ni mới là quà reall 💖" }
         };
 
+        // Hàm bắt đầu game
+        function startGame() {
+            startScreen.style.display = "none"; // Ẩn màn hình bắt đầu
+            isPlaying = true; // Cho phép chơi
+            createCactus(); // Bắt đầu sinh xương rồng
+        }
+
         function jump(e) {
+            // Chỉ nhảy khi đã bấm Start
+            if (!isPlaying) return;
+
             if ((e.code === "Space" || e.type === "touchstart") && !isJumping && !isGameOver && !isVictory) {
                 isJumping = true; dino.classList.add("jump-animation");
                 setTimeout(() => { dino.classList.remove("jump-animation"); isJumping = false; }, 500);
@@ -215,55 +227,64 @@
         document.addEventListener('keydown', jump); document.addEventListener('touchstart', jump);
 
         function createCactus() {
-            if (isGameOver || isVictory) return;
+            if (isGameOver || isVictory || !isPlaying) return;
+            
             const cactus = document.createElement("div"); cactus.classList.add("cactus"); board.appendChild(cactus);
             let cactusPosition = 800; let passed = false;
+            
             let timerId = setInterval(() => {
                 if (isGameOver || isVictory) { clearInterval(timerId); return; }
+                
                 cactusPosition -= gameSpeed; cactus.style.left = cactusPosition + "px";
                 let dinoRect = dino.getBoundingClientRect(); let cactusRect = cactus.getBoundingClientRect();
+                
                 if (dinoRect.right > cactusRect.left + 10 && dinoRect.left < cactusRect.right - 10 && dinoRect.bottom > cactusRect.top) {
                     clearInterval(timerId); handleGameOver();
                 }
+                
                 if (cactusPosition < 50 && !passed) {
-                    score++; scoreText.innerText = "Điểm: " + score; passed = true;
-                    if (score >= 3) handleVictory();
+                    score++; scoreText.innerText = "Điểm: " + score+"/25"; passed = true;
+                    if (score >= 25) handleVictory();
                 }
+                
                 if (cactusPosition < -50) { cactus.remove(); clearInterval(timerId); }
             }, 20);
+            
             let randomTime = Math.floor(Math.random() * 1000) + 1200;
             cactusTimeoutId = setTimeout(createCactus, randomTime);
         }
 
-        function handleGameOver() { isGameOver = true; gameOverMsg.style.display = "block"; dino.style.animation = "none"; }
+        function handleGameOver() { 
+            isGameOver = true; isPlaying = false; 
+            gameOverMsg.style.display = "block"; dino.style.animation = "none"; 
+        }
+        
         function handleVictory() {
-            isVictory = true; clearTimeout(cactusTimeoutId);
+            isVictory = true; isPlaying = false; clearTimeout(cactusTimeoutId);
             document.querySelectorAll('.cactus').forEach(c => c.remove());
             victoryScreen.style.display = "flex";
         }
+        
         function openGift(id) {
             currentGiftId = id; giftSelection.style.display = "none"; document.getElementById("instruction-text").style.display = "none";
             giftReveal.style.display = "flex";
             rewardImg.src = rewards[id].fakeImg; rewardText.innerText = rewards[id].fakeMsg;
-            btnRealGift.style.display = "inline-block"; btnReadLetter.style.display = "none"; // Ẩn nút đọc thư lúc đầu
+            btnRealGift.style.display = "inline-block"; btnReadLetter.style.display = "none"; 
         }
+        
         function showRealGift() {
             rewardImg.src = rewards[currentGiftId].realImg; rewardText.innerText = rewards[currentGiftId].realMsg;
             victoryTitle.innerText = "cái trước vỡnnnnnnn đóa (hoặc nà khong hihi🤭)";
-            btnRealGift.style.display = "none"; // Ẩn nút mở quà
-            btnReadLetter.style.display = "inline-block"; // Hiện nút Đọc thư
+            btnRealGift.style.display = "none"; btnReadLetter.style.display = "inline-block"; 
         }
-
-        // --- HÀM MỞ THƯ MỚI ---
+        
         function showLetter() {
-            // Ẩn màn hình quà đi
-            victoryScreen.style.display = "none"; 
-            // Hiện màn hình thư lên
-            letterScreen.style.display = "flex";
+            victoryScreen.style.display = "none"; letterScreen.style.display = "flex";
         }
 
         function restartGame() { location.reload(); }
-        createCactus();
+        
+        // Không gọi createCactus() ở đây nữa, mà gọi trong startGame()
     </script>
 </body>
 </html>
